@@ -1,0 +1,39 @@
+@startuml
+
+' Interfaz Programa
+interface Programa {
+    + boolean contar()
+}
+
+' Clase ProgramaCountDown que implementa la interfaz Programa
+class ProgramaCountDown {
+    + boolean contar()
+}
+
+' Clase ProgramaCountUp que implementa la interfaz Programa
+class ProgramaCountUp {
+    + boolean contar()
+}
+
+' Clase HaltChecker
+class HaltChecker {
+    + boolean checkHalt(Programa programa)
+}
+
+' Clase Reverser
+class Reverser {
+    + void reverse(Programa programa)
+}
+
+' Clase Usuario
+class Usuario {
+    + void main(String[] args)
+}
+
+' Relaciones
+Programa <|-- ProgramaCountDown
+Programa <|-- ProgramaCountUp
+HaltChecker ..> Programa : uses
+Reverser ..> HaltChecker : uses
+
+@enduml
