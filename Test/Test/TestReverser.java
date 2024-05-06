@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 public class TestReverser {
     @Test
     public void testReverse() {
-        Reverser reverser = new Reverser();
+        Reverser reverser = new Reverser(new VistaUsuario());
         Programa countUp = new ProgramaCountUp();
         Programa countDown = new ProgramaCountDown();
 
         Thread countUpThread = new Thread(() -> reverser.reverse(countUp));
         countUpThread.start();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -23,7 +23,7 @@ public class TestReverser {
         Thread countDownThread = new Thread(() -> reverser.reverse(countDown));
         countDownThread.start();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
