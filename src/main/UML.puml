@@ -1,41 +1,53 @@
 @startuml
+!pragma layout smetana
 
-' Interfaz Programa
 interface Programa {
-    + boolean contar()
+    + contar() : boolean
 }
 
-' Clase ProgramaCountDown que implementa la interfaz Programa
 class ProgramaCountDown {
-    + boolean contar()
+    + contar() : boolean
 }
 
-' Clase ProgramaCountUp que implementa la interfaz Programa
 class ProgramaCountUp {
-    + boolean contar()
+    + contar() : boolean
 }
 
-' Clase HaltChecker
+abstract class Manejador {
+    + setSucesor(sucesor : Manejador)
+    + manejar(programa : Programa) : boolean
+}
+
+class ManejadorCountDown {
+    + manejar(programa : Programa) : boolean
+}
+
+class ManejadorCountUp {
+    + manejar(programa : Programa) : boolean
+}
+
 class HaltChecker {
-    + boolean checkHalt(Programa programa)
+    + checkHalt(programa : Programa) : boolean
 }
 
-' Clase Reverser
 class Reverser {
-    + void reverse(Programa programa)
+    + reverse(programa : Programa)
 }
 
-' Clase Usuario
 class VistaUsuario {
-        + void update(String texto)
-        + void main(String[] args)
+    + update(texto : String)
+    + VistaUsuario()
 }
 
-' Relaciones
 Programa <|-- ProgramaCountDown
 Programa <|-- ProgramaCountUp
-HaltChecker ..> Programa : uses
-Reverser ..> HaltChecker : uses
-VistaUsuario --> Reverser : uses
+
+Manejador <|-- ManejadorCountDown
+Manejador <|-- ManejadorCountUp
+
+HaltChecker o-- Programa
+Reverser o-- Programa
+Reverser o-- Manejador
+VistaUsuario o-- Reverser
 
 @enduml

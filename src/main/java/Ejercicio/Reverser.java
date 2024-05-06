@@ -4,32 +4,35 @@ package Ejercicio;
 public class Reverser {
 
     /**
-     * @param vistaUsuario que recibe la vista del usuario
+     * @param vistaUsuario que representa la vista del usuario
+     * @param sucesorCountDown que representa el sucesorCountDown
+     * @param sucesorCountUp que representa el sucesorCountUp
      */
 
     //Atributos
     private VistaUsuario vistaUsuario;
+    private ManejadorCountDown sucesorCountDown;
+    private ManejadorCountUp sucesorCountUp;
 
     /**
-     * Constructor de la clase Reverser
+     * Constructor de la clase Reverser que recibe una instancia de VistaUsuario
      * @param vistaUsuario
      */
 
     //Constructor
     public Reverser(VistaUsuario vistaUsuario){
         this.vistaUsuario = vistaUsuario;
+        sucesorCountDown = new ManejadorCountDown();
+        sucesorCountUp = new ManejadorCountUp();
+
+        //Configuramos la cadena de responsabilidad
+        sucesorCountDown.setSucesor(sucesorCountUp);
     }
 
     //Método que si el programa se detiene, entra en un bucle infinito y si el programa no se detiene, termina inmediatamente
     public void reverse(Programa programa){
-
-        /**
-         * Método que si el programa se detiene, entra en un bucle infinito y si el programa no se detiene, termina inmediatamente
-         * @param programa
-         */
-
-        HaltChecker haltChecker = new HaltChecker();
-        boolean halt = haltChecker.checkHalt(programa);
+        //Comienza el manejo de la solicitud a través de SucesorCountDown
+        boolean halt = sucesorCountDown.manejar(programa);
 
         //Si el programa se detiene, Reverser entra en un bucle infinito
         if(halt){
@@ -39,7 +42,7 @@ public class Reverser {
             while(true){
                 vistaUsuario.update("Reverser está en un bucle infinito porque HaltChecker ha determinado que " + programa.getClass().getSimpleName() + " se detiene.");
 
-                //Añadimos un tiempo de espera de 2 segundos ente cada iteración
+                //Añadimos un tiempo de espera de 1,5 segundos ente cada iteración
                 try {
                     Thread.sleep(1500);
                 } catch (InterruptedException e) {
