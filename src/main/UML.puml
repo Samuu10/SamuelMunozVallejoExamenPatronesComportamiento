@@ -26,8 +26,9 @@ class Reverser {
 }
 
 ' Clase Usuario
-class Usuario {
-    + void main(String[] args)
+class VistaUsuario {
+        + void update(String texto)
+        + void main(String[] args)
 }
 
 ' Relaciones
@@ -35,5 +36,6 @@ Programa <|-- ProgramaCountDown
 Programa <|-- ProgramaCountUp
 HaltChecker ..> Programa : uses
 Reverser ..> HaltChecker : uses
+VistaUsuario --> Reverser : uses
 
 @enduml
