@@ -4,6 +4,14 @@ import java.awt.*;
 
 //Clase VistaUsuario que extiende de JFrame y representa la interfaz gráfica de usuario
 public class VistaUsuario extends JFrame{
+
+    /**
+     * @param areaTexto que representa el área de texto
+     * @param botonCountUp que representa el botón para probar CountUp
+     * @param botonCountDown que representa el botón para probar CountDown
+     * @param reverser que representa la instancia de Reverser
+     */
+
     //Atributos
     private JTextArea areaTexto;
     private JButton botonCountUp;

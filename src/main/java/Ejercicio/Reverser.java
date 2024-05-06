@@ -2,8 +2,18 @@ package Ejercicio;
 
 //Clase Reverser que si el programa se detiene, entra en un bucle infinito y si el programa no se detiene, termina inmediatamente
 public class Reverser {
+
+    /**
+     * @param vistaUsuario que recibe la vista del usuario
+     */
+
     //Atributos
     private VistaUsuario vistaUsuario;
+
+    /**
+     * Constructor de la clase Reverser
+     * @param vistaUsuario
+     */
 
     //Constructor
     public Reverser(VistaUsuario vistaUsuario){
