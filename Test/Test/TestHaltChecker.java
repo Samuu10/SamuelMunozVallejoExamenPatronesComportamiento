@@ -10,7 +10,7 @@ public class TestHaltChecker {
         Programa countUp = new ProgramaCountUp();
         Programa countDown = new ProgramaCountDown();
 
-        assertFalse(haltChecker.checkHalt(countUp));
-        assertTrue(haltChecker.checkHalt(countDown));
+        assertFalse(haltChecker.manejar(countUp));
+        assertTrue(haltChecker.manejar(countDown));
     }
 }

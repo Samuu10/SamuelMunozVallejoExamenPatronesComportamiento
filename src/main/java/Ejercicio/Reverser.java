@@ -5,14 +5,13 @@ public class Reverser {
 
     /**
      * @param vistaUsuario que representa la vista del usuario
-     * @param sucesorCountDown que representa el sucesorCountDown
-     * @param sucesorCountUp que representa el sucesorCountUp
+     * @param haltChecker que representa el haltChecker
      */
 
     //Atributos
     private VistaUsuario vistaUsuario;
-    private ManejadorCountDown sucesorCountDown;
-    private ManejadorCountUp sucesorCountUp;
+    private HaltChecker haltChecker;
+
 
     /**
      * Constructor de la clase Reverser que recibe una instancia de VistaUsuario
@@ -20,19 +19,22 @@ public class Reverser {
      */
 
     //Constructor
-    public Reverser(VistaUsuario vistaUsuario){
+    public Reverser(VistaUsuario vistaUsuario) {
         this.vistaUsuario = vistaUsuario;
-        sucesorCountDown = new ManejadorCountDown();
-        sucesorCountUp = new ManejadorCountUp();
+        haltChecker = new HaltChecker();
 
-        //Configuramos la cadena de responsabilidad
-        sucesorCountDown.setSucesor(sucesorCountUp);
+        // Crear manejadores y configurar la cadena de responsabilidad
+        ManejadorCountDown manejadorCountDown = new ManejadorCountDown();
+        ManejadorCountUp manejadorCountUp = new ManejadorCountUp();
+
+        haltChecker.setSucesor(manejadorCountDown);
+        manejadorCountDown.setSucesor(manejadorCountUp);
     }
 
     //Método que si el programa se detiene, entra en un bucle infinito y si el programa no se detiene, termina inmediatamente
     public void reverse(Programa programa){
-        //Comienza el manejo de la solicitud a través de SucesorCountDown
-        boolean halt = sucesorCountDown.manejar(programa);
+        //Comienza el manejo de la solicitud a través de la cadena de responsabilidad
+        boolean halt = haltChecker.manejar(programa);
 
         //Si el programa se detiene, Reverser entra en un bucle infinito
         if(halt){
