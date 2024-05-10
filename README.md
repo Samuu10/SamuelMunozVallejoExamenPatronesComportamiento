@@ -20,3 +20,5 @@ El objetivo de este proyecto, ha sido simular la Prueba de la Parada utilizando 
  - Diagrama UML: Se ha creado un diagrama UML que muestra la estructura del programa, incluyendo las clases, sus relaciones y herencias. Esto proporciona una visión general clara de cómo se organiza el código, ayudando a los desarrolladores a comprender mejor la arquitectura y facilitar la colaboración y el mantenimiento.
  - JavaDoc: El código está documentado con comentarios JavaDoc y con el correspondiente documento, lo que permite a otros desarrolladores comprender fácilmente los objetivos, parámetros y retornos de cada método y clase. Esta documentación mejora la legibilidad del código y hace que sea más fácil para otros desarrolladores utilizar y mantener el sistema principal.
    
+Link al JavaDoc: http://localhost:63342/SamuelMunozVallejoExamenPatronesComportamiento/JavaDoc/index.html
+Link al Repositorio: https://github.com/Samuu10/SamuelMunozVallejoExamenPatronesComportamiento.git
